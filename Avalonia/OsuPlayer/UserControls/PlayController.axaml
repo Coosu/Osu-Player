@@ -1,0 +1,124 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:userControls="clr-namespace:Milki.OsuPlayer.UserControls"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="46"
+             x:Class="Milki.OsuPlayer.UserControls.PlayController">
+
+    <!-- 资源定义 -->
+    <UserControl.Resources>
+        <!-- 后续会添加转换器和样式资源 -->
+    </UserControl.Resources>
+    
+    <Grid Background="#30000000">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="65" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        
+        <!-- 缩略图按钮 -->
+        <Button x:Name="ThumbButton" Grid.Column="0"
+                Width="61" Height="46" Margin="1">
+            <Image x:Name="Thumb" Stretch="UniformToFill" />
+        </Button>
+        
+        <!-- 控制按钮区域 -->
+        <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="10,0,10,0">
+            <Button x:Name="PrevButton" Width="28" Height="28" Margin="8" 
+                    VerticalAlignment="Center" CornerRadius="7">
+                <!-- 上一曲图标 -->
+                <Path Data="M352 192H96v-64h256a64 64 0 0 1 64 64v320a64 64 0 0 1-64 64H96v-64h256V192z" 
+                      Fill="White" Stretch="Uniform" Width="16" Height="16" />
+            </Button>
+            
+            <Button x:Name="PlayButton" Width="32" Height="32" Margin="8" 
+                    VerticalAlignment="Center" CornerRadius="7">
+                <!-- 播放/暂停图标 (示例为播放图标) -->
+                <Path Data="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm144.1 454.9L437.7 677.8a8.02 8.02 0 0 1-12.7-6.5V353.7a8 8 0 0 1 12.7-6.5L656.1 506a7.9 7.9 0 0 1 0 12.9z" 
+                      Fill="White" Stretch="Uniform" Width="20" Height="20" />
+            </Button>
+            
+            <Button x:Name="NextButton" Width="28" Height="28" Margin="8" 
+                    VerticalAlignment="Center" CornerRadius="7">
+                <!-- 下一曲图标 -->
+                <Path Data="M928 160H672v64h256v320H672v64h256a64 64 0 0 0 64-64V224a64 64 0 0 0-64-64z" 
+                      Fill="White" Stretch="Uniform" Width="16" Height="16" />
+            </Button>
+            
+            <Button x:Name="OpenButton" Width="28" Height="28" Margin="8" 
+                    VerticalAlignment="Center" CornerRadius="14" Background="#5d9cec">
+                <!-- 打开文件图标 -->
+                <Path Data="M928 444H820V330.4c0-17.7-14.3-32-32-32H473L355.7 186.2a8.15 8.15 0 0 0-5.5-2.2H96c-17.7 0-32 14.3-32 32v592c0 17.7 14.3 32 32 32h698c13 0 24.8-7.9 29.7-20l134-332c1.5-3.8 2.3-7.9 2.3-12 0-17.7-14.3-32-32-32zm-180 0H238c-13 0-24.8 7.9-29.7 20L136 643.2V256h188.5l119.6 114.4H748V444z" 
+                      Fill="White" Stretch="Uniform" Width="16" Height="16" />
+            </Button>
+        </StackPanel>
+        
+        <!-- 进度条和信息区域 -->
+        <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            
+            <!-- 歌曲信息 -->
+            <Grid Grid.Row="0" Margin="0,1,0,-3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                
+                <Button Grid.Column="0" Margin="3,0" Background="Transparent" BorderThickness="0">
+                    <TextBlock>
+                        <Run Text="示例歌曲标题" Foreground="#777" />
+                        <Run Text="-" />
+                        <Run Text="示例艺术家" Foreground="#AAA" />
+                    </TextBlock>
+                </Button>
+                
+                <StackPanel Grid.Column="2" Orientation="Horizontal">
+                    <TextBlock x:Name="LblNow" Text="00:00" Foreground="#777" VerticalAlignment="Center" />
+                    <TextBlock Text="/" Margin="-5,0" Foreground="#858585" VerticalAlignment="Center" />
+                    <TextBlock x:Name="LblTotal" Text="00:00" Foreground="#AAA" VerticalAlignment="Center" />
+                </StackPanel>
+            </Grid>
+            
+            <!-- 进度条 -->
+            <Slider x:Name="PlayProgress" Grid.Row="1" Margin="3" Minimum="0" Maximum="100" Value="0" />
+        </Grid>
+        
+        <!-- 功能按钮区域 -->
+        <Grid Grid.Column="3">
+            <StackPanel Orientation="Horizontal" Margin="10,0,10,0" VerticalAlignment="Center">
+                <Button x:Name="ModeButton" Width="24" Height="24" Margin="8" Background="Transparent" BorderThickness="0">
+                    <!-- 播放模式图标 -->
+                    <Path Data="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z" 
+                          Fill="White" Stretch="Uniform" Width="20" Height="20" />
+                </Button>
+                
+                <Button x:Name="LikeButton" Width="23" Height="23" Margin="6" Background="Transparent" BorderThickness="0" VerticalAlignment="Center">
+                    <!-- 收藏图标 -->
+                    <Path Data="M923 283.6a260.04 260.04 0 0 0-56.9-82.8 264.4 264.4 0 0 0-84-55.5A265.34 265.34 0 0 0 679.7 125c-49.3 0-97.4 13.5-139.2 39-10 6.1-19.5 12.8-28.5 20.1-9-7.3-18.5-14-28.5-20.1-41.8-25.5-89.9-39-139.2-39-35.5 0-69.9 6.8-102.4 20.3-31.4 13-59.7 31.7-84 55.5a258.44 258.44 0 0 0-56.9 82.8c-13.9 32.3-21 66.6-21 101.9 0 33.3 6.8 68 20.3 103.3 11.3 29.5 27.5 60.1 48.2 91 32.8 48.9 77.9 99.9 133.9 151.6 92.8 85.7 184.7 144.9 188.6 147.3l23.7 15.2c10.5 6.7 24 6.7 34.5 0l23.7-15.2c3.9-2.5 95.7-61.6 188.6-147.3 56-51.7 101.1-102.7 133.9-151.6 20.7-30.9 37-61.5 48.2-91 13.5-35.3 20.3-70 20.3-103.3.1-35.3-7-69.6-20.9-101.9z" 
+                          Fill="White" Stretch="Uniform" Width="18" Height="18" />
+                </Button>
+                
+                <Button x:Name="VolumeButton" Width="23" Height="23" Margin="6" Background="Transparent" BorderThickness="0" VerticalAlignment="Center">
+                    <!-- 音量图标 -->
+                    <Path Data="M842 454c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8 0 140.3-113.7 254-254 254-4.4 0-8 3.6-8 8v60c0 4.4 3.6 8 8 8 190.5 0 346-155.5 346-346zm-98-98c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8 0 84.2-68.8 153-153 153-4.4 0-8 3.6-8 8v60c0 4.4 3.6 8 8 8 134.4 0 245-110.6 245-245zm-240-42c-39.5 0-76.2 13.4-104.8 35.7-10.7 8.4-13.2 23.9-5.6 35.2l22.2 33.4c7 10.4 20.9 14.3 32.7 8.6 15.3-7.5 32.5-11.7 50.5-11.7 62 0 113 51 113 113 0 18-4.2 35.2-11.7 50.5-5.7 11.8-1.8 25.7 8.6 32.7l33.4 22.2c11.3 7.5 26.8 5 35.2-5.6C794.6 536.2 808 499.5 808 460c0-97.2-78.8-176-176-176zm-17.1-48h-3.7c-121.3 0-221 99.7-221 221v3.7c0 6.8 7.7 10.5 13 6.3l56.4-44.9c2.6-2.1 3.2-5.9 1.2-8.5-12.3-16.9-19.6-37.7-19.6-60.3 0-56.4 45.8-102.3 102.3-102.3 22.5 0 43.4 7.3 60.3 19.6 2.6 1.9 6.4 1.3 8.5-1.2l44.9-56.4c3.8-5.4.1-13-6.3-13z" 
+                          Fill="White" Stretch="Uniform" Width="18" Height="18" />
+                </Button>
+                
+                <Button x:Name="PlayListButton" Width="23" Height="23" Margin="6" Background="Transparent" BorderThickness="0" VerticalAlignment="Center">
+                    <!-- 播放列表图标 -->
+                    <Path Data="M912 192H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM104 228a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 284a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 284a56 56 0 1 0 112 0 56 56 0 1 0-112 0z" 
+                          Fill="White" Stretch="Uniform" Width="18" Height="18" />
+                </Button>
+            </StackPanel>
+        </Grid>
+        
+        <!-- 弹出菜单区域 - 后续实现 -->
+    </Grid>
+</UserControl>
