@@ -1,0 +1,178 @@
+<Styles
+  xmlns="https://github.com/avaloniaui"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:uiComponents="clr-namespace:Milki.OsuPlayer.UiComponents">
+  <Design.PreviewWith>
+    <Border Padding="50">
+      <uiComponents:UiTextBox
+        IsPopupOpened="True"
+        PopupText="asdf"
+        Text="test">
+        <!--<controls:ContextFlyout>
+                    <Flyout >
+                        asdf
+                    </Flyout>
+                </controls:ContextFlyout>-->
+      </uiComponents:UiTextBox>
+    </Border>
+  </Design.PreviewWith>
+  <Styles.Resources>
+    <!--  https://github.com/AvaloniaUI/Avalonia/blob/master/src/Avalonia.Themes.Fluent/Controls/TextBox.xaml  -->
+
+    <ControlTheme x:Key="{x:Type uiComponents:UiTextBox}" TargetType="uiComponents:UiTextBox">
+      <Setter Property="Foreground" Value="{DynamicResource TextControlForeground}" />
+      <Setter Property="Background" Value="{DynamicResource TextControlBackground}" />
+      <Setter Property="CaretBrush" Value="{DynamicResource TextControlForeground}" />
+      <!--<Setter Property="BorderBrush" Value="{DynamicResource TextControlBorderBrush}" />-->
+      <Setter Property="SelectionBrush" Value="{DynamicResource TextControlSelectionHighlightColor}" />
+      <!--<Setter Property="BorderThickness" Value="{DynamicResource TextControlBorderThemeThickness}" />-->
+      <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
+      <Setter Property="FontSize" Value="{DynamicResource ControlContentThemeFontSize}" />
+      <Setter Property="MinHeight" Value="{DynamicResource TextControlThemeMinHeight}" />
+      <Setter Property="MinWidth" Value="{DynamicResource TextControlThemeMinWidth}" />
+      <Setter Property="Padding" Value="{DynamicResource TextControlThemePadding}" />
+      <Setter Property="FocusAdorner" Value="{x:Null}" />
+      <Setter Property="ScrollViewer.IsScrollChainingEnabled" Value="True" />
+
+      <Setter Property="WatermarkForeground" Value="#A0A0A0" />
+      <Setter Property="FocusedBorderBrush" Value="#547BB6" />
+      <Setter Property="BorderThickness" Value="1" />
+      <Setter Property="BorderBrush" Value="#C0C0C0" />
+      <Setter Property="VerticalContentAlignment" Value="Center" />
+      <Setter Property="ContextFlyout">
+        <Flyout Placement="Right" ShowMode="Transient">
+          <Flyout.FlyoutPresenterTheme>
+            <ControlTheme TargetType="FlyoutPresenter">
+              <Setter Property="Template">
+                <ControlTemplate>
+                  <ContentPresenter Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" />
+                </ControlTemplate>
+              </Setter>
+            </ControlTheme>
+          </Flyout.FlyoutPresenterTheme>
+          <Grid ColumnDefinitions="Auto,*">
+            <Viewbox Width="10" Margin="0,0,-14,8">
+              <Polygon
+                Fill="#f8d7da"
+                Points="0,1 1.73,0 1.73,2"
+                Stroke="#f5c6cb"
+                StrokeThickness="0.2" />
+            </Viewbox>
+            <Border
+              Grid.Column="1"
+              Margin="10"
+              Padding="6,3"
+              Background="#f8d7da"
+              BorderBrush="#f5c6cb"
+              BorderThickness="1"
+              CornerRadius="4"
+              UseLayoutRounding="True">
+              <Border.Effect>
+                <DropShadowEffect BlurRadius="10" Opacity="0.3" />
+              </Border.Effect>
+            </Border>
+            <Border
+              Grid.Column="1"
+              Margin="10"
+              Padding="6,3"
+              Background="#f8d7da"
+              BorderBrush="#f5c6cb"
+              BorderThickness="1"
+              CornerRadius="4"
+              UseLayoutRounding="True">
+              <TextBlock Foreground="#721c24" Text="{Binding $parent[uiComponents:UiTextBox].PopupText}" />
+            </Border>
+          </Grid>
+        </Flyout>
+      </Setter>
+      <Setter Property="Template">
+        <ControlTemplate TargetType="uiComponents:UiTextBox">
+          <DataValidationErrors>
+            <Panel>
+              <Border
+                Name="PART_BorderElement"
+                MinWidth="{TemplateBinding MinWidth}"
+                MinHeight="{TemplateBinding MinHeight}"
+                Background="{TemplateBinding Background}"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                CornerRadius="{TemplateBinding CornerRadius}" />
+
+              <Border Margin="{TemplateBinding BorderThickness}">
+                <Grid ColumnDefinitions="Auto,*">
+                  <Border x:Name="IconBorder" IsVisible="{TemplateBinding IconTemplate, Converter={x:Static ObjectConverters.IsNotNull}}">
+                    <Viewbox
+                      Width="{TemplateBinding IconSize}"
+                      Height="{TemplateBinding IconSize}"
+                      Margin="{TemplateBinding IconMargin}">
+                      <ContentControl Template="{TemplateBinding IconTemplate}" />
+                    </Viewbox>
+                  </Border>
+                  <DockPanel
+                    x:Name="PART_InnerDockPanel"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="1"
+                    Margin="{TemplateBinding Padding}"
+                    Cursor="IBeam">
+                    <TextBlock
+                      Name="PART_FloatingWatermark"
+                      DockPanel.Dock="Top"
+                      FontSize="{TemplateBinding FontSize}"
+                      Foreground="{DynamicResource SystemAccentColor}"
+                      IsVisible="False"
+                      Text="{TemplateBinding Watermark}" />
+                    <ScrollViewer
+                      Name="PART_ScrollViewer"
+                      AllowAutoHide="{TemplateBinding (ScrollViewer.AllowAutoHide)}"
+                      BringIntoViewOnFocusChange="{TemplateBinding (ScrollViewer.BringIntoViewOnFocusChange)}"
+                      HorizontalScrollBarVisibility="{TemplateBinding (ScrollViewer.HorizontalScrollBarVisibility)}"
+                      IsScrollChainingEnabled="{TemplateBinding (ScrollViewer.IsScrollChainingEnabled)}"
+                      VerticalScrollBarVisibility="{TemplateBinding (ScrollViewer.VerticalScrollBarVisibility)}">
+                      <Panel>
+                        <TextBlock
+                          Name="PART_Watermark"
+                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                          Foreground="{TemplateBinding WatermarkForeground}"
+                          IsVisible="{TemplateBinding Text,
+                                                      Converter={x:Static StringConverters.IsNullOrEmpty}}"
+                          Text="{TemplateBinding Watermark}"
+                          TextAlignment="{TemplateBinding TextAlignment}"
+                          TextWrapping="{TemplateBinding TextWrapping}" />
+                        <TextPresenter
+                          Name="PART_TextPresenter"
+                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                          CaretBrush="{TemplateBinding CaretBrush}"
+                          CaretIndex="{TemplateBinding CaretIndex}"
+                          LetterSpacing="{TemplateBinding LetterSpacing}"
+                          LineHeight="{TemplateBinding LineHeight}"
+                          PasswordChar="{TemplateBinding PasswordChar}"
+                          RevealPassword="{TemplateBinding RevealPassword}"
+                          SelectionBrush="{TemplateBinding SelectionBrush}"
+                          SelectionEnd="{TemplateBinding SelectionEnd}"
+                          SelectionForegroundBrush="{TemplateBinding SelectionForegroundBrush}"
+                          SelectionStart="{TemplateBinding SelectionStart}"
+                          Text="{TemplateBinding Text,
+                                                 Mode=TwoWay}"
+                          TextAlignment="{TemplateBinding TextAlignment}"
+                          TextWrapping="{TemplateBinding TextWrapping}" />
+                      </Panel>
+                    </ScrollViewer>
+                  </DockPanel>
+                </Grid>
+              </Border>
+            </Panel>
+          </DataValidationErrors>
+        </ControlTemplate>
+      </Setter>
+
+      <Style Selector="^ /template/ Border#PART_BorderElement">
+        <Setter Property="BorderBrush" Value="{Binding BorderBrush, RelativeSource={RelativeSource TemplatedParent}}" />
+      </Style>
+      <Style Selector="^:focus /template/ Border#PART_BorderElement">
+        <Setter Property="BorderBrush" Value="{Binding FocusedBorderBrush, RelativeSource={RelativeSource TemplatedParent}}" />
+      </Style>
+    </ControlTheme>
+
+  </Styles.Resources>
+</Styles>
