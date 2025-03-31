@@ -2,6 +2,7 @@ using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Avalonia.Media.Imaging;
+using Milki.OsuPlayer.Models;
 
 namespace Milki.OsuPlayer.ViewModels
 {
@@ -14,8 +15,8 @@ namespace Milki.OsuPlayer.ViewModels
         private double _progress = 0;
         private bool _isPlaying = false;
         private bool _isFavorite = false;
-        private Bitmap _thumbnail = null;
-        private int _playMode = 0; // 0: 顺序播放, 1: 单曲循环, 2: 随机播放
+        private Bitmap? _thumbnail = null;
+        private PlayMode _playMode = PlayMode.Normal;
 
         public string Title
         {
@@ -114,7 +115,7 @@ namespace Milki.OsuPlayer.ViewModels
             }
         }
 
-        public Bitmap Thumbnail
+        public Bitmap? Thumbnail
         {
             get => _thumbnail;
             set
@@ -127,7 +128,7 @@ namespace Milki.OsuPlayer.ViewModels
             }
         }
 
-        public int PlayMode
+        public PlayMode PlayMode
         {
             get => _playMode;
             set
@@ -140,7 +141,6 @@ namespace Milki.OsuPlayer.ViewModels
             }
         }
 
-        // 命令和方法将在后续实现
         public void PlayPause()
         {
             IsPlaying = !IsPlaying;
@@ -148,14 +148,14 @@ namespace Milki.OsuPlayer.ViewModels
 
         public void PlayNext()
         {
-            // 示例实现
+            // 模拟播放下一首
             Title = "下一首歌曲";
             Artist = "下一位艺术家";
         }
 
         public void PlayPrevious()
         {
-            // 示例实现
+            // 模拟播放上一首
             Title = "上一首歌曲";
             Artist = "上一位艺术家";
         }
@@ -167,7 +167,22 @@ namespace Milki.OsuPlayer.ViewModels
 
         public void ChangePlayMode()
         {
-            PlayMode = (PlayMode + 1) % 3;
+            PlayMode = (PlayMode)(((int)PlayMode + 1) % 6);
+        }
+
+        public void ShowVolumeControl()
+        {
+            // 显示音量控制
+        }
+
+        public void ShowPlayList()
+        {
+            // 显示播放列表
+        }
+
+        public void ShowDetails()
+        {
+            // 显示歌曲详情
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;

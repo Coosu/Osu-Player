@@ -1,0 +1,148 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <StackPanel Spacing="10">
+                <Slider Width="300" Value="50" Maximum="100" Classes="PinkSlider" />
+            </StackPanel>
+        </Border>
+    </Design.PreviewWith>
+    
+    <!-- 粉色滑块样式 -->
+    <Style Selector="Slider.PinkSlider">
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="Minimum" Value="0" />
+        <Setter Property="Maximum" Value="100" />
+        <Setter Property="Value" Value="0" />
+        <Setter Property="CornerRadius" Value="2" />
+    </Style>
+    
+    <!-- 滑块轨道样式 - 已完成部分 -->
+    <Style Selector="Slider.PinkSlider /template/ RepeatButton#PART_DecreaseButton">
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid>
+                    <Border Height="5" 
+                            Background="White"
+                            CornerRadius="{TemplateBinding CornerRadius}">
+                        <Border.Transitions>
+                            <Transitions>
+                                <BrushTransition Property="Background" Duration="0:0:0.2" />
+                            </Transitions>
+                        </Border.Transitions>
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="10" Opacity="0.2" OffsetY="1" Color="#FF9D9D" />
+                        </Border.Effect>
+                    </Border>
+                    <Border Height="5" 
+                            Background="#FF9D9D"
+                            CornerRadius="{TemplateBinding CornerRadius}" />
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+    
+    <!-- 滑块轨道样式 - 未完成部分 -->
+    <Style Selector="Slider.PinkSlider /template/ RepeatButton#PART_IncreaseButton">
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Height="3" 
+                        Background="#EAEAEA"
+                        CornerRadius="{TemplateBinding CornerRadius}" />
+            </ControlTemplate>
+        </Setter>
+    </Style>
+    
+    <!-- 滑块拇指样式 -->
+    <Style Selector="Slider.PinkSlider /template/ Thumb#PART_Thumb">
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid>
+                    <Ellipse Width="15" 
+                             Height="15" 
+                             Fill="White">
+                        <Ellipse.Effect>
+                            <DropShadowEffect BlurRadius="10" Opacity="0.2" OffsetY="1" Color="#FF9D9D" />
+                        </Ellipse.Effect>
+                    </Ellipse>
+                    <Ellipse Width="15" 
+                             Height="15" 
+                             Fill="#FF9D9D"
+                             Stroke="White"
+                             StrokeThickness="2" />
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+    
+    <!-- 鼠标悬停时的样式 -->
+    <Style Selector="Slider.PinkSlider:pointerover /template/ Thumb#PART_Thumb">
+        <Setter Property="Cursor" Value="Hand" />
+    </Style>
+    
+    <!-- 白色滑块样式（同样模式但颜色不同） -->
+    <Style Selector="Slider.WhiteSlider">
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="Minimum" Value="0" />
+        <Setter Property="Maximum" Value="100" />
+        <Setter Property="Value" Value="0" />
+        <Setter Property="CornerRadius" Value="2" />
+    </Style>
+    
+    <Style Selector="Slider.WhiteSlider /template/ RepeatButton#PART_DecreaseButton">
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid>
+                    <Border Height="4" 
+                            Background="White"
+                            CornerRadius="{TemplateBinding CornerRadius}">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="10" Opacity="0.3" OffsetY="1" Color="#FFFD629A" />
+                        </Border.Effect>
+                    </Border>
+                    <Border Height="4" 
+                            Background="#FFFD629A"
+                            CornerRadius="{TemplateBinding CornerRadius}" />
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+    
+    <Style Selector="Slider.WhiteSlider /template/ RepeatButton#PART_IncreaseButton">
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Height="3" 
+                        Background="#80B0B0B0"
+                        CornerRadius="{TemplateBinding CornerRadius}" />
+            </ControlTemplate>
+        </Setter>
+    </Style>
+    
+    <Style Selector="Slider.WhiteSlider /template/ Thumb#PART_Thumb">
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid>
+                    <Ellipse Width="11" 
+                             Height="11" 
+                             Fill="White"
+                             Stroke="White"
+                             StrokeThickness="3">
+                        <Ellipse.Effect>
+                            <DropShadowEffect BlurRadius="5" Opacity="0.3" OffsetY="1" Color="#FFFD629A" />
+                        </Ellipse.Effect>
+                    </Ellipse>
+                    <Ellipse Width="11" 
+                             Height="11" 
+                             Fill="#FFFD629A"
+                             Stroke="White"
+                             StrokeThickness="3" />
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+    
+    <Style Selector="Slider.WhiteSlider:pointerover /template/ Thumb#PART_Thumb">
+        <Setter Property="Cursor" Value="Hand" />
+    </Style>
+</Styles>

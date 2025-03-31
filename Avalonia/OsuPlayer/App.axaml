@@ -11,6 +11,7 @@
       <converters:BoolToColorConverter x:Key="BoolToColorConverter"/>
       <converters:BoolToPlayPauseIconConverter x:Key="BoolToPlayPauseIconConverter"/>
       <converters:BoolToSizeConverter x:Key="BoolToSizeConverter"/>
+      <converters:PlayModeToIconConverter x:Key="PlayModeToIconConverter"/>
     </ResourceDictionary>
   </Application.Resources>
   
