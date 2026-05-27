@@ -8,10 +8,16 @@
 
   <Application.Resources>
     <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceInclude Source="avares://OsuPlayer/lang/default.axaml" />
+      </ResourceDictionary.MergedDictionaries>
       <converters:BoolToColorConverter x:Key="BoolToColorConverter"/>
       <converters:BoolToPlayPauseIconConverter x:Key="BoolToPlayPauseIconConverter"/>
       <converters:BoolToSizeConverter x:Key="BoolToSizeConverter"/>
       <converters:PlayModeToIconConverter x:Key="PlayModeToIconConverter"/>
+      <converters:LocaleKeyToResourceConverter x:Key="LocaleKeyToResourceConverter"/>
+      <converters:GetOutlinedTextConverter x:Key="GetOutlinedTextConverter"/>
+      <converters:BoolIsFavToSvgConverter x:Key="BoolIsFavToSvgConverter"/>
       <ImageBrush x:Key="TextureBrush" Source="avares://OsuPlayer/Assets/osu_texture.png"/>
       <ImageBrush x:Key="TextureBrush3" Source="avares://OsuPlayer/Assets/store.jpg" Stretch="UniformToFill"/>
       <ImageBrush x:Key="OsuTextureBlueBrush" Source="avares://OsuPlayer/Assets/osu_texture_blue.png"/>

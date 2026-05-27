@@ -21,19 +21,19 @@ public sealed class MainWindowViewModel : INotifyPropertyChanged
 
         LibraryNavigationItems =
         [
-            new NavigationItemViewModel("搜索", "Search", Geometry.Parse("M909.6 829.6 702.1 622.1C746.6 563.1 773 489.6 773 410 773 215.1 614.9 57 420 57S67 215.1 67 410s158.1 353 353 353c79.6 0 153.1-26.4 212.1-70.9l207.5 207.5c19.3 19.3 50.7 19.3 70 0s19.3-50.7 0-70zM420 674c-145.8 0-264-118.2-264-264s118.2-264 264-264 264 118.2 264 264-118.2 264-264 264z"), Navigate),
-            new NavigationItemViewModel("故事版", "Storyboard", Geometry.Parse("M128 192h768v96H128v-96zm0 160h320v288H128V352zm384 0h384v96H512v-96zm0 128h384v96H512v-96zm0 128h256v64H512v-64z"), Navigate)
+            new NavigationItemViewModel("搜索", "Search", Geometry.Parse("M909.6 829.6 702.1 622.1C746.6 563.1 773 489.6 773 410 773 215.1 614.9 57 420 57S67 215.1 67 410s158.1 353 353 353c79.6 0 153.1-26.4 212.1-70.9l207.5 207.5c19.3 19.3 50.7 19.3 70 0s19.3-50.7 0-70zM420 674c-145.8 0-264-118.2-264-264s118.2-264 264-264 264 118.2 264 264-118.2 264-264 264z"), Navigate, "#4050A0"),
+            new NavigationItemViewModel("故事版", "Storyboard", Geometry.Parse("M128 192h768v96H128v-96zm0 160h320v288H128V352zm384 0h384v96H512v-96zm0 128h384v96H512v-96zm0 128h256v64H512v-64z"), Navigate, "#508030")
         ];
 
         MineNavigationItems =
         [
-            new NavigationItemViewModel("最近播放", "Recent", Geometry.Parse("M512 96C282.2 96 96 282.2 96 512s186.2 416 416 416 416-186.2 416-416S741.8 96 512 96zm0 736c-176.7 0-320-143.3-320-320s143.3-320 320-320 320 143.3 320 320-143.3 320-320 320zm48-336V272h-96v272l224 134 48-80-176-102z"), Navigate),
-            new NavigationItemViewModel("导出管理", "Export", Geometry.Parse("M512 96 288 320h144v288h160V320h144L512 96zM224 704h576v96H224v-96z"), Navigate)
+            new NavigationItemViewModel("最近播放", "Recent", Geometry.Parse("M512 96C282.2 96 96 282.2 96 512s186.2 416 416 416 416-186.2 416-416S741.8 96 512 96zm0 736c-176.7 0-320-143.3-320-320s143.3-320 320-320 320 143.3 320 320-143.3 320-320 320zm48-336V272h-96v272l224 134 48-80-176-102z"), Navigate, "#A04090"),
+            new NavigationItemViewModel("导出管理", "Export", Geometry.Parse("M512 96 288 320h144v288h160V320h144L512 96zM224 704h576v96H224v-96z"), Navigate, "#A09040")
         ];
 
         CollectionNavigationItems =
         [
-            new NavigationItemViewModel("默认收藏", "Collection", Geometry.Parse("M512 864 438 797C176 560 96 488 96 338c0-122 96-218 218-218 69 0 135 32 178 82 43-50 109-82 178-82 122 0 218 96 218 218 0 150-80 222-342 459l-74 67z"), Navigate)
+            new NavigationItemViewModel("默认收藏", "Collection", Geometry.Parse("M512 864 438 797C176 560 96 488 96 338c0-122 96-218 218-218 69 0 135 32 178 82 43-50 109-82 178-82 122 0 218 96 218 218 0 150-80 222-342 459l-74 67z"), Navigate, "#4090A0")
         ];
 
         _currentPageTitle = "主页";

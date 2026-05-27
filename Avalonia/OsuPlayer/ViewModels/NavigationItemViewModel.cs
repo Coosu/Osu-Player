@@ -12,11 +12,12 @@ public sealed class NavigationItemViewModel : INotifyPropertyChanged
     private bool _isSelected;
     private bool _isTextVisible = true;
 
-    public NavigationItemViewModel(string title, string key, Geometry icon, Action<NavigationItemViewModel> navigate)
+    public NavigationItemViewModel(string title, string key, Geometry icon, Action<NavigationItemViewModel> navigate, string selectedColorHex = "#DC498D")
     {
         Title = title;
         Key = key;
         Icon = icon;
+        SelectedColorHex = selectedColorHex;
         _navigate = navigate;
         ActivateCommand = new RelayCommand(() => _navigate(this));
     }
@@ -26,6 +27,8 @@ public sealed class NavigationItemViewModel : INotifyPropertyChanged
     public string Key { get; }
 
     public Geometry Icon { get; }
+
+    public string SelectedColorHex { get; }
 
     public ICommand ActivateCommand { get; }
 

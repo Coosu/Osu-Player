@@ -3,8 +3,9 @@
     
     <Design.PreviewWith>
         <Border Padding="20">
-            <StackPanel Spacing="10">
-                <Slider Width="300" Value="50" Maximum="100" Classes="PinkSlider" />
+            <StackPanel Spacing="20">
+                <Slider Width="300" Value="50" Maximum="100" Classes="PinkSlider" Orientation="Horizontal" />
+                <Slider Height="150" Value="50" Maximum="100" Classes="WhiteSlider" Orientation="Vertical" />
             </StackPanel>
         </Border>
     </Design.PreviewWith>
@@ -18,8 +19,8 @@
         <Setter Property="CornerRadius" Value="2" />
     </Style>
     
-    <!-- 滑块轨道样式 - 已完成部分 -->
-    <Style Selector="Slider.PinkSlider /template/ RepeatButton#PART_DecreaseButton">
+    <!-- 粉色水平 DecreaseButton -->
+    <Style Selector="Slider.PinkSlider:horizontal /template/ RepeatButton#PART_DecreaseButton">
         <Setter Property="Template">
             <ControlTemplate>
                 <Grid>
@@ -43,11 +44,47 @@
         </Setter>
     </Style>
     
-    <!-- 滑块轨道样式 - 未完成部分 -->
-    <Style Selector="Slider.PinkSlider /template/ RepeatButton#PART_IncreaseButton">
+    <!-- 粉色垂直 DecreaseButton -->
+    <Style Selector="Slider.PinkSlider:vertical /template/ RepeatButton#PART_DecreaseButton">
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid>
+                    <Border Width="5" 
+                            Background="White"
+                            CornerRadius="{TemplateBinding CornerRadius}">
+                        <Border.Transitions>
+                            <Transitions>
+                                <BrushTransition Property="Background" Duration="0:0:0.2" />
+                            </Transitions>
+                        </Border.Transitions>
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="10" Opacity="0.2" OffsetX="1" Color="#FF9D9D" />
+                        </Border.Effect>
+                    </Border>
+                    <Border Width="5" 
+                            Background="#FF9D9D"
+                            CornerRadius="{TemplateBinding CornerRadius}" />
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+    
+    <!-- 粉色水平 IncreaseButton -->
+    <Style Selector="Slider.PinkSlider:horizontal /template/ RepeatButton#PART_IncreaseButton">
         <Setter Property="Template">
             <ControlTemplate>
                 <Border Height="3" 
+                        Background="#EAEAEA"
+                        CornerRadius="{TemplateBinding CornerRadius}" />
+            </ControlTemplate>
+        </Setter>
+    </Style>
+    
+    <!-- 粉色垂直 IncreaseButton -->
+    <Style Selector="Slider.PinkSlider:vertical /template/ RepeatButton#PART_IncreaseButton">
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Width="3" 
                         Background="#EAEAEA"
                         CornerRadius="{TemplateBinding CornerRadius}" />
             </ControlTemplate>
@@ -81,7 +118,7 @@
         <Setter Property="Cursor" Value="Hand" />
     </Style>
     
-    <!-- 白色滑块样式（同样模式但颜色不同） -->
+    <!-- 白色滑块样式 -->
     <Style Selector="Slider.WhiteSlider">
         <Setter Property="Focusable" Value="False" />
         <Setter Property="Minimum" Value="0" />
@@ -90,7 +127,8 @@
         <Setter Property="CornerRadius" Value="2" />
     </Style>
     
-    <Style Selector="Slider.WhiteSlider /template/ RepeatButton#PART_DecreaseButton">
+    <!-- 白色水平 DecreaseButton -->
+    <Style Selector="Slider.WhiteSlider:horizontal /template/ RepeatButton#PART_DecreaseButton">
         <Setter Property="Template">
             <ControlTemplate>
                 <Grid>
@@ -109,10 +147,42 @@
         </Setter>
     </Style>
     
-    <Style Selector="Slider.WhiteSlider /template/ RepeatButton#PART_IncreaseButton">
+    <!-- 白色垂直 DecreaseButton -->
+    <Style Selector="Slider.WhiteSlider:vertical /template/ RepeatButton#PART_DecreaseButton">
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid>
+                    <Border Width="4" 
+                            Background="White"
+                            CornerRadius="{TemplateBinding CornerRadius}">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="10" Opacity="0.3" OffsetX="1" Color="#FFFD629A" />
+                        </Border.Effect>
+                    </Border>
+                    <Border Width="4" 
+                            Background="#FFFD629A"
+                            CornerRadius="{TemplateBinding CornerRadius}" />
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+    
+    <!-- 白色水平 IncreaseButton -->
+    <Style Selector="Slider.WhiteSlider:horizontal /template/ RepeatButton#PART_IncreaseButton">
         <Setter Property="Template">
             <ControlTemplate>
                 <Border Height="3" 
+                        Background="#80B0B0B0"
+                        CornerRadius="{TemplateBinding CornerRadius}" />
+            </ControlTemplate>
+        </Setter>
+    </Style>
+    
+    <!-- 白色垂直 IncreaseButton -->
+    <Style Selector="Slider.WhiteSlider:vertical /template/ RepeatButton#PART_IncreaseButton">
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Width="3" 
                         Background="#80B0B0B0"
                         CornerRadius="{TemplateBinding CornerRadius}" />
             </ControlTemplate>
