@@ -1,8 +1,7 @@
-using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
-using System;
+using Milki.OsuPlayer.ViewModels;
 
 namespace Milki.OsuPlayer.UserControls
 {
@@ -11,6 +10,7 @@ namespace Milki.OsuPlayer.UserControls
         public PlayController()
         {
             InitializeComponent();
+            DataContext = PlayControllerViewModel.Shared;
         }
 
         private void InitializeComponent()
@@ -18,7 +18,19 @@ namespace Milki.OsuPlayer.UserControls
             AvaloniaXamlLoader.Load(this);
         }
 
-        // 这里将添加事件处理方法
-        // 目前使用示例数据和基本功能，后续会完善
+        private void ModeButton_Click(object? sender, RoutedEventArgs e)
+        {
+            PopMode.IsOpen = true;
+        }
+
+        private void VolumeButton_Click(object? sender, RoutedEventArgs e)
+        {
+            Pop.IsOpen = true;
+        }
+
+        private void PlayListButton_Click(object? sender, RoutedEventArgs e)
+        {
+            PopPlayList.IsOpen = true;
+        }
     }
 }

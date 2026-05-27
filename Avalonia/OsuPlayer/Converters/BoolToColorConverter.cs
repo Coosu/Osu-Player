@@ -11,10 +11,10 @@ namespace Milki.OsuPlayer.Converters
         {
             if (value is bool boolValue)
             {
-                return boolValue ? new SolidColorBrush(Colors.Red) : new SolidColorBrush(Colors.Gray);
+                return new SolidColorBrush(boolValue ? Color.Parse("#DE4958") : Color.Parse("#646C77"));
             }
             
-            return new SolidColorBrush(Colors.Gray);
+            return new SolidColorBrush(Color.Parse("#646C77"));
         }
 
         public object? ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)

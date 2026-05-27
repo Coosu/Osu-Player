@@ -12,6 +12,15 @@
       <converters:BoolToPlayPauseIconConverter x:Key="BoolToPlayPauseIconConverter"/>
       <converters:BoolToSizeConverter x:Key="BoolToSizeConverter"/>
       <converters:PlayModeToIconConverter x:Key="PlayModeToIconConverter"/>
+      <ImageBrush x:Key="TextureBrush" Source="avares://OsuPlayer/Assets/osu_texture.png"/>
+      <ImageBrush x:Key="TextureBrush3" Source="avares://OsuPlayer/Assets/store.jpg" Stretch="UniformToFill"/>
+      <ImageBrush x:Key="OsuTextureBlueBrush" Source="avares://OsuPlayer/Assets/osu_texture_blue.png"/>
+      <FontFamily x:Key="SspRegular">avares://OsuPlayer/Assets/Fonts#Source Sans Pro</FontFamily>
+      <LinearGradientBrush x:Key="SliderBackground" StartPoint="0%,0%" EndPoint="0%,100%">
+        <GradientStop Offset="0" Color="#FFFC59A3"/>
+        <GradientStop Offset="0.5" Color="#FFFD629A"/>
+        <GradientStop Offset="1" Color="#FFFC59A3"/>
+      </LinearGradientBrush>
     </ResourceDictionary>
   </Application.Resources>
   

@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows.Input;
 using Avalonia.Media.Imaging;
 using Milki.OsuPlayer.Models;
 
@@ -8,6 +9,8 @@ namespace Milki.OsuPlayer.ViewModels
 {
     public class PlayControllerViewModel : INotifyPropertyChanged
     {
+        public static PlayControllerViewModel Shared { get; } = new();
+
         private string _title = "示例歌曲标题";
         private string _artist = "示例艺术家";
         private TimeSpan _currentPosition = TimeSpan.Zero;
@@ -17,6 +20,22 @@ namespace Milki.OsuPlayer.ViewModels
         private bool _isFavorite = false;
         private Bitmap? _thumbnail = null;
         private PlayMode _playMode = PlayMode.Normal;
+
+        public PlayControllerViewModel()
+        {
+            PlayPauseCommand = new DelegateCommand(PlayPause);
+            PlayNextCommand = new DelegateCommand(PlayNext);
+            PlayPreviousCommand = new DelegateCommand(PlayPrevious);
+            ToggleFavoriteCommand = new DelegateCommand(ToggleFavorite);
+        }
+
+        public ICommand PlayPauseCommand { get; }
+
+        public ICommand PlayNextCommand { get; }
+
+        public ICommand PlayPreviousCommand { get; }
+
+        public ICommand ToggleFavoriteCommand { get; }
 
         public string Title
         {
@@ -190,6 +209,32 @@ namespace Milki.OsuPlayer.ViewModels
         protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        private sealed class DelegateCommand : ICommand
+        {
+            private readonly Action _execute;
+
+            public DelegateCommand(Action execute)
+            {
+                _execute = execute;
+            }
+
+            public bool CanExecute(object? parameter)
+            {
+                return true;
+            }
+
+            public void Execute(object? parameter)
+            {
+                _execute();
+            }
+
+            public event EventHandler? CanExecuteChanged
+            {
+                add { }
+                remove { }
+            }
         }
     }
 }

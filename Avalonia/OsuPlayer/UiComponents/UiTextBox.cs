@@ -121,15 +121,6 @@ public class UiTextBox : TextBox
         set => SetValue(AcceptOnlyNumberAndEnglishProperty, value);
     }
 
-    public static readonly StyledProperty<IBrush> WatermarkForegroundProperty =
-        AvaloniaProperty.Register<UiTextBox, IBrush>(nameof(WatermarkForeground));
-
-    public IBrush WatermarkForeground
-    {
-        get => GetValue(WatermarkForegroundProperty);
-        set => SetValue(WatermarkForegroundProperty, value);
-    }
-
     public UiTextBox()
     {
         //https://docs.avaloniaui.net/docs/next/get-started/wpf/tunnelling-events
